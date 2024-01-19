@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrl: './item.component.css',
-  providers: [StarWarsService],
 })
 export class ItemComponent {
   @Input() character: any = {};
+
   swService: StarWarsService;
 
   constructor(swService: StarWarsService) {

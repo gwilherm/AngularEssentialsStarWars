@@ -5,7 +5,6 @@ import { StarWarsService } from '../star-wars.service';
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css',
-  providers: [StarWarsService],
 })
 export class TabsComponent {
   characters: any[] = [];
@@ -17,7 +16,8 @@ export class TabsComponent {
   }
 
   getCharacters() {
-    return this.swService.getCharacters(this.chosenList);
+    this.characters = this.swService.getCharacters(this.chosenList);
+    return this.characters;
   }
 
   onChoose(side: string) {
