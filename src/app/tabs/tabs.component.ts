@@ -16,6 +16,7 @@ export class TabsComponent {
     if (this.chosenList === side) {
       return;
     }
+
     this.chosenList = side;
   }
 
