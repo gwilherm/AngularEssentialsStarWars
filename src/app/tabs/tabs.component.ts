@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
+import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css',
+  providers: [StarWarsService],
 })
 export class TabsComponent {
-  characters = [
-    { name: 'Luke Skywalker', side: '' },
-    { name: 'Darth Vader', side: '' },
-  ];
+  characters: any[] = [];
   chosenList = 'all';
+  swService: StarWarsService;
+
+  constructor(swService: StarWarsService) {
+    this.swService = swService;
+  }
+
+  getCharacters() {
+    return this.swService.getCharacters(this.chosenList);
+  }
 
   onChoose(side: string) {
     if (this.chosenList === side) {
@@ -18,19 +26,5 @@ export class TabsComponent {
     }
 
     this.chosenList = side;
-  }
-
-  getCharacters() {
-    if (this.chosenList === 'all') {
-      return this.characters.slice();
-    }
-    return this.characters.filter((char) => char.side === this.chosenList);
-  }
-
-  onSideAssigned(charInfo: { name: string; side: string }) {
-    const pos = this.characters.findIndex(
-      (char) => char.name === charInfo.name,
-    );
-    this.characters[pos].side = charInfo.side;
   }
 }
