@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-item',
@@ -7,12 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ItemComponent {
   @Input() character: any = {};
+  @Output() sideAssigned = new EventEmitter<{ name: string; side: string }>();
 
   onAssign(side: string) {
-    if (this.character.side === side) {
-      this.character.side = '';
-    } else {
-      this.character.side = side;
-    }
+    this.sideAssigned.emit({ name: this.character.name, side: side });
   }
 }
