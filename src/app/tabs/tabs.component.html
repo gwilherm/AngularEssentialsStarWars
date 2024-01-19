@@ -10,5 +10,7 @@
             <a (click)="onChoose('dark')" style="cursor: pointer" class="nav-link"[ngClass]="{active: chosenList === 'dark'}">Dark</a>
         </li>
     </ul>
-    <app-list [characters]="getCharacters()"></app-list>
+    <app-list
+        [characters]="getCharacters()"
+        (sideAssigned)="onSideAssigned($event)"></app-list>
 </div>
