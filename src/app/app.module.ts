@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 const routes = [
   { path: '', component: TabsComponent },
   { path: 'new-character', component: CreateCharacterComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
