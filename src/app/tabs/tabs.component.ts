@@ -1,30 +1,8 @@
 import { Component } from '@angular/core';
-import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css',
 })
-export class TabsComponent {
-  characters: any[] = [];
-  chosenList = 'all';
-  swService: StarWarsService;
-
-  constructor(swService: StarWarsService) {
-    this.swService = swService;
-  }
-
-  getCharacters() {
-    this.characters = this.swService.getCharacters(this.chosenList);
-    return this.characters;
-  }
-
-  onChoose(side: string) {
-    if (this.chosenList === side) {
-      return;
-    }
-
-    this.chosenList = side;
-  }
-}
+export class TabsComponent {}
