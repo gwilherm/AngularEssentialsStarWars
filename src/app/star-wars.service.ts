@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient as Http } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { LogService } from './log.service';
 
 @Injectable()
 export class StarWarsService {
   logService: LogService;
+  http: Http;
+
   private characters = [
     { name: 'Luke Skywalker', side: '' },
     { name: 'Darth Vader', side: '' },
   ];
   charactersChanged = new Subject<void>();
 
-  constructor(logService: LogService) {
+  constructor(logService: LogService, http: Http) {
     this.logService = logService;
+    this.http = http;
   }
+
+  fetchCharacters() {}
 
   getCharacters(chosenList: string) {
     if (chosenList === 'all') {
