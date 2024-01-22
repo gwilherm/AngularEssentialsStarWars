@@ -6,7 +6,7 @@
             id="name"
             name="name"
             class="form-control"
-            ngModel
+            [ngModel]="defaultName"
             required
             #nameCtrl="ngModel"/>
         <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name!</span>

@@ -12,6 +12,7 @@ export class CreateCharacterComponent {
     { display: 'Light', value: 'light' },
     { display: 'Dark', value: 'dark' },
   ];
+  defaultName = 'Obi-Wan Kenobi';
 
   swService: StarWarsService;
 
