@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -12,10 +12,17 @@ import { CreateCharacterComponent } from './create-character/create-character.co
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
-const routes = [
-  { path: '', component: TabsComponent },
+const routes: Routes = [
+  {
+    path: 'characters',
+    component: TabsComponent,
+    children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      { path: ':side', component: ListComponent },
+    ],
+  },
   { path: 'new-character', component: CreateCharacterComponent },
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/characters' },
 ];
 
 @NgModule({
